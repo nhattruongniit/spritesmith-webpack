@@ -1,2 +1,1 @@
-# spritesmith-webpack
-spritesmith-webpack
+# This is build tool generate spritesheet json to make game on pixi js
