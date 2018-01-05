@@ -1,0 +1,2 @@
+# spritesmith-webpack
+spritesmith-webpack
