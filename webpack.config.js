@@ -1,16 +1,41 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const production = process.env.NODE_ENV === 'production' ? require('./webpack.production') : {};
+console.log(require('./webpack.production'));
 
-module.exports = {
-    entry: './app.js',
+module.exports = Object.assign({
+    entry: {
+        'kingdom.dev': './src/dev.js'
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        devtoolModuleFilenameTemplate: "./dist/[resource]"
+        filename: '[name].js',
+        path: path.resolve(__dirname, './static'),
+        devtoolModuleFilenameTemplate: "./static/[resource]"
     },
-    devtool: 'cheap-eval-source-map',
+    devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, './'),
+        contentBase: path.join(__dirname, './static'),
         compress: true,
-        port: 9000
+        //host: '0.0.0.0',
+        port: 8000
     },
-};
+
+    module: {
+
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve('src', 'index.html')
+        })
+    ],
+
+    resolve: {
+        alias: {
+            'farufaru-config': path.resolve(__dirname, './src/config')
+        }
+    },
+    externals: [{
+        'pixi.js': 'PIXI',
+        'gsap': 'window'
+    }, ],
+}, production);

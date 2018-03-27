@@ -4,12 +4,14 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "sprites": "spritesmith --rc .spritesmith.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "glob": "^7.1.2",
+        "spritesmith": "^3.3.0",
+        "spritesmith-cli": "^1.1.2",
         "spritesmith-texturepacker": "^1.0.0",
         "webpack": "^3.10.0",
         "webpack-dev-server": "^2.9.7"
